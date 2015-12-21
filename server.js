@@ -1,13 +1,9 @@
 #!/bin/env node
-//  OpenShift sample Node application
-var express = require('express');
-var fs      = require('fs');
+var express 	= require('express');
+var bodyParser 	= require('body-parser');
+var fs     		= require('fs');
 
-
-/**
- *  Define the sample application.
- */
-var SampleApp = function() {
+var BuildStatusGateway = function() {
 
     //  Scope.
     var self = this;
@@ -31,19 +27,6 @@ var SampleApp = function() {
             console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
             self.ipaddress = "127.0.0.1";
         };
-    };
-
-
-    /**
-     *  Populate the cache.
-     */
-    self.populateCache = function() {
-        if (typeof self.zcache === "undefined") {
-            self.zcache = { 'index.html': '' };
-        }
-
-        //  Local cache for static content.
-        self.zcache['index.html'] = fs.readFileSync('./index.html');
     };
 
 
@@ -84,50 +67,28 @@ var SampleApp = function() {
         });
     };
 
-
     /*  ================================================================  */
     /*  App server functions (main app logic here).                       */
     /*  ================================================================  */
 
-    /**
-     *  Create the routing table entries + handlers for the application.
-     */
-    self.createRoutes = function() {
-        self.routes = { };
-
-        self.routes['/asciimo'] = function(req, res) {
-            var link = "http://i.imgur.com/kmbjB.png";
-            res.send("<html><body><img src='" + link + "'></body></html>");
-        };
-
-        self.routes['/'] = function(req, res) {
-            res.setHeader('Content-Type', 'text/html');
-            res.send(self.cache_get('index.html') );
-        };
-    };
-
-
-    /**
-     *  Initialize the server (express) and create the routes and register
-     *  the handlers.
-     */
     self.initializeServer = function() {
-        self.createRoutes();
-        self.app = express.createServer();
+        self.app = express();
+		self.app.use(bodyParser.urlencoded({ extended: true }));
+		self.app.use(bodyParser.json());
 
-        //  Add handlers for the app (from the routes).
-        for (var r in self.routes) {
-            self.app.get(r, self.routes[r]);
-        }
+		self.app.get('/', function(req, res) {
+			res.setHeader('Content-Type', 'text/html');
+			res.send(fs.readFileSync('./index.html'));
+		});
+
+		self.app.use('/api', require('./routes/api'));
     };
-
 
     /**
      *  Initializes the sample application.
      */
     self.initialize = function() {
         self.setupVariables();
-        self.populateCache();
         self.setupTerminationHandlers();
 
         // Create the express server and routes.
@@ -146,14 +107,12 @@ var SampleApp = function() {
         });
     };
 
-};   /*  Sample Application.  */
-
-
+};  
 
 /**
  *  main():  Main code.
  */
-var zapp = new SampleApp();
-zapp.initialize();
-zapp.start();
+var buildstatus = new BuildStatusGateway();
+buildstatus.initialize();
+buildstatus.start();
 
