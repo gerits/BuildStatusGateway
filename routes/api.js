@@ -9,9 +9,9 @@ router.post('/authenticate', function(req, res) {
 		console.log('result token:' + result.token);
 
 		travisci.createAuth(result.token, function(result) {
-			res.send("{ 'accessToken': '" + result.access_token + "' }");
-
 			github.deleteAuth(result.id, req.get('Authorization'));
+
+			res.send("{ 'accessToken': '" + result.access_token + "' }");
 		});
 	});
 });
@@ -32,7 +32,8 @@ router.get('/repos', function(req, res) {
 					var repository = {
 						id : currentValue.id,
 						name : currentValue.slug,
-						desecription : currentValue.description,
+						description : currentValue.description,
+						last_build_number : currentValue.last_build_number,
 						last_build_state : currentValue.last_build_state,
 						last_build_duration : currentValue.last_build_duration,
 						last_build_finished_at : currentValue.last_build_finished_at
