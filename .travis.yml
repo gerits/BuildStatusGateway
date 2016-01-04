@@ -1,0 +1,9 @@
+deploy:
+  provider: openshift
+  user: gerits
+  password:
+    secure: B+9eC0XCBbZ9Nb1QGWGNtyH4ekfmiYciv4FZr34JZ8TVC+M6+c6lwhBLuWJlirORLXSjMd5TSgVQH/me9wIQlU2PZdV5QAc/NingrRDVO8CDZs8iLqWRT0z/3oGpDnH+RmegzE+C2wHlw7m9b7UnWU2Ni32TjAvFIn1pPE3DGg4gO9EeB8SUuHAOJyQXbYUq1bcF+PyIsBXPdBNjy4/UPVR8aubYar16d3fMLwpFZGeuAg9uEQWv1wbLCTCqIzLKoV6BUqgAxT4y8yrhuBnftRFWulKroYV0lviv70JLmEMUg+VKmTKpXBvevUK7GTEVEeBj+k8LSOjcyqynCRBbDDG70DKCCZMM/nALcv5GkpFHA/jMu17YhmCVL5VWuBCdiP2mapnk0Dpr7GF0cAgjucA5UjAPX9srZdG4Nuw7iUuoLibb4/4IF3FXtun9uUPiGgVmlDEntuwsuYJghpfVzEUt6yqkdZiZDo+0+kjBdjFF/UlufH369oC7DnVQT5RXomZ3D4WiHxxoju/pR9+t7/529/S2X3LDOg8wqNj/6LAzaSsSortgvWcGqN5JfSQMiFodi0M5sEgQTQROtUQRiadOC9TO3S1E67plCofdGBHtea4JLWEH1STpRFrf78DpgXvq7nYF4VkT7VFZQpjFsMwyqBdbBtWtkXo9OYxizM4=
+  app: buildstatus
+  domain: gerits
+  on:
+    repo: gerits/BuildStatusGateway
