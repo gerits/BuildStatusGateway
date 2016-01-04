@@ -1,18 +1,11 @@
 language: node_js
-node_js: 
-  - "4.1"
-  - "4.0"
-  - "0.12"
-  - "0.11"
-  - "0.10"
-  - "0.8"
-  - "0.6"
-  - "iojs"
+node_js:
+- '5.3.0'
 deploy:
   provider: openshift
   user: gerits
   password:
-    secure: B+9eC0XCBbZ9Nb1QGWGNtyH4ekfmiYciv4FZr34JZ8TVC+M6+c6lwhBLuWJlirORLXSjMd5TSgVQH/me9wIQlU2PZdV5QAc/NingrRDVO8CDZs8iLqWRT0z/3oGpDnH+RmegzE+C2wHlw7m9b7UnWU2Ni32TjAvFIn1pPE3DGg4gO9EeB8SUuHAOJyQXbYUq1bcF+PyIsBXPdBNjy4/UPVR8aubYar16d3fMLwpFZGeuAg9uEQWv1wbLCTCqIzLKoV6BUqgAxT4y8yrhuBnftRFWulKroYV0lviv70JLmEMUg+VKmTKpXBvevUK7GTEVEeBj+k8LSOjcyqynCRBbDDG70DKCCZMM/nALcv5GkpFHA/jMu17YhmCVL5VWuBCdiP2mapnk0Dpr7GF0cAgjucA5UjAPX9srZdG4Nuw7iUuoLibb4/4IF3FXtun9uUPiGgVmlDEntuwsuYJghpfVzEUt6yqkdZiZDo+0+kjBdjFF/UlufH369oC7DnVQT5RXomZ3D4WiHxxoju/pR9+t7/529/S2X3LDOg8wqNj/6LAzaSsSortgvWcGqN5JfSQMiFodi0M5sEgQTQROtUQRiadOC9TO3S1E67plCofdGBHtea4JLWEH1STpRFrf78DpgXvq7nYF4VkT7VFZQpjFsMwyqBdbBtWtkXo9OYxizM4=
+    secure: X2vHn+tW+/ELVvcGNgdwJmmR9Vcclk97nPMC0rA4HraFMfl4GLO99tuFl64/INlxp86nAjPHdekSOMaL90yP/swx9zN8CM56IXvDpx404neYFom5Ju4CVEVFe4MjgOUEdeMuSwWAZJ7B66cV7nMZ5067dnnRoH8vP8L34obF2EPzTmnnLwvMb0VKaCy42j+MU+JGsRvWlFgXSNBXxl+VdS+0hRVTMQ4gxhFsYQ3iAj7fU87avr3quPiY3n5YYrGjR/DrozklIqC/tJAxRJ9u0SgfriZZBpwd0ChfBme2qO4z906a6Is5/02FBTIq5R5vq/5r72VP9vSAN9nTTxBfglQwlL2Yme3iw0qTopadWcrJeRTpFVWRMcdfJ+O4OtaewSlfpoGc9lRQrJQ1B+fko4zHQFz4btoTirlTOQ0riUywoGCGdgSw59C7vyebwCr39Tlob3AW8OOTZ55hlqAfd5XHwNy99l2mfkxDndfgIIADhxDNoKO8Mh0ABMCOft0oIwQWfqqYz9RNJj8x9+Ro/rYWZIhQm6+EKAmtaYmmRBje88GBouSPAYgKVVHOUWbmC5lF29q+8z5XG5wCe4dp6J199mO7LRd4YwXxOBQGiWLeeuD9tALpcQ8orGdQWB3rw+UN0tS4iOyzLLvNH4RU+W5oSw7jzLshpIy7P3ajBYw=
   app: buildstatus
   domain: gerits
   on:
