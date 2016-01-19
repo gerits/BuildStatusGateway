@@ -5,14 +5,20 @@ var authenticate = {};
 
 authenticate.execute = function(authorization, callback) {
 	github.createAuth(authorization, function(result) {
-		travisci.createAuth(result.token, function(result) {
+		var github_id = result.id;
+		var github_token = result.token;
+		
+		travisci.createAuth(github_token, function(result) {
 			var token = result.access_token;
-			github.deleteAuth(result.id, authorization, function() {
-				callback({
-					'accessToken' : token
-				});
+
+			github.deleteAuth(github_id, authorization, function() {
+			});
+			
+			callback({
+				'accessToken' : token
 			});
 		});
+
 	});
 }
 
